@@ -1,28 +1,26 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+import { BrowserRouter, Switch, Route } from 'react-router-dom'
+import { Provider } from 'react-redux'
+import store from './store'
+import Main from './containers/Main/Main'
+import InputPage from './containers/InputText/InputPage'
+import OutputPage from './containers/OutputPage/OutputPage'
 import './App.css';
 
 class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
-    );
-  }
-}
+    render() {
+        return (
+            <Provider store={ store } >
+            <BrowserRouter > 
+                <Switch>
+                    <Route exact path={ "/" } component={ Main }  />
+                    <Route exact path={ "/input/:type" } component={ InputPage } />             
+                    <Route exact path={ "/observe-text" } component={ OutputPage } />             
+                </Switch>            
+            </BrowserRouter>
+            </Provider>
+        );
+    }
+} 
 
 export default App;
