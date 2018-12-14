@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import shuffleArray from '../../helpers/shuffleArray'
-
+import Header from '../../components/Header'
 
 class OutputPage extends React.Component{
 
@@ -19,7 +19,9 @@ class OutputPage extends React.Component{
 
         return(
             <div className={ "containerDiv" }>
-                <div className={ "topControl"}></div>
+                <div className={ "topControl"}>
+                    <Header />
+                </div>
                 <div className={ "innerDiv sentenceDisplayDiv shadowCentralComponent" } >  
                     <h3>{ this.props.text.title }</h3>
                     { outputSentences }

@@ -21,7 +21,7 @@ class InputPage extends React.Component{
 
     registerInputText = ( values ) => {
         this.props.registerSentences( values )
-        this.props.history.push( '/observe-text' )
+        this.props.history.push( '/observe-exercise' )
     }
 
     render(){

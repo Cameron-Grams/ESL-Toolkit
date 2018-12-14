@@ -11,7 +11,7 @@ class InputText extends React.Component{
             <form id={ "textInputForm" } className="textForm" onSubmit={ this.props.handleSubmit } >
                 <div>< Field className = "textTitle generalInput" name="textTitleInput" component={ "input" } placeholder="Exercise Title"   /></div>
                 <div>< Field className = "textField generalInput" name="originalTextInput" component={ "textarea" } placeholder="Exercise Text"   /></div>
-                <button className="submitButton" type="submit" >Next Step</button>
+                <button className="submitButton  inputButton" type="submit" >Next Step</button>
             </form>
             </div>
         )

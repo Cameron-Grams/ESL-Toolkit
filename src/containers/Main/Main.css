@@ -2,3 +2,11 @@
     padding: 30px; 
     width: 25%;
 }
+
+.clozeButton:hover{
+    background-color: #9007c6;
+}
+
+.scrambleButton:hover{
+    background-color: #e08f09;
+}
