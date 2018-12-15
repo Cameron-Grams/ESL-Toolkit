@@ -1,5 +1,6 @@
 const initialState = {
     exerciseType : null,
+    showInstructions: false,
     title : "", 
     originalText : "",
     sentences : []
@@ -12,6 +13,13 @@ const Reducer = ( state = initialState, action) => {
             return{
                 ...state,
                 exerciseType : action.data
+            }
+        }
+
+        case( 'CONTROL_INSTRUCTIONS' ):{
+            return{
+                ...state,
+                showInstructions : !state.showInstructions
             }
         }
 

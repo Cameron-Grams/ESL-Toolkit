@@ -1,6 +1,15 @@
 .mainInnerDiv{
     padding: 30px; 
     width: 25%;
+    max-width: 475px;
+}
+
+.clozeButton{
+    width: 40%;
+}
+
+.scrambleButton{
+    width: 40%;
 }
 
 .clozeButton:hover{

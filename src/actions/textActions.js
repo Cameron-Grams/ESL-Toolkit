@@ -1,3 +1,8 @@
+
+
+
+
+
 export function setExercise( value ){
     return(
         {
@@ -7,7 +12,13 @@ export function setExercise( value ){
     )
 }
 
-
+export function instructionsDisplay(){
+    return(
+        {
+            type: 'CONTROL_INSTRUCTIONS',
+        }
+    )
+}
 
 
 
