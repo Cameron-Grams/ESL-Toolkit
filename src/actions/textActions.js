@@ -32,3 +32,13 @@ export function registerSentences( values ){
         } 
     )
 }
+
+export function loadCurrentValue( value ){
+    console.log( 'in text actions with value: ', value)
+    return(
+        {
+            type : 'LOAD_CURRENT_VALUE',
+            originalText : value
+        }
+    )
+}

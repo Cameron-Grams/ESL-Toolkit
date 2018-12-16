@@ -2,7 +2,7 @@ const initialState = {
     exerciseType : null,
     showInstructions: false,
     title : "", 
-    originalText : "",
+    originalText : null,
     sentences : []
 }
 
@@ -29,6 +29,13 @@ const Reducer = ( state = initialState, action) => {
                 originalText : action.text,
                 title : action.title,
                 sentences : action.sentences
+            }
+        }
+
+        case( 'LOAD_CURRENT_VALUE' ): {
+            return{
+                ...state,
+                originalText : action.value
             }
         }
 

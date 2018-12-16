@@ -23,7 +23,7 @@ class OutputPage extends React.Component{
 }
 
 const mapStateToProps = ( state ) => ({
-    text : state.reducer
+    exerciseType : state.reducer.exerciseType
 })
 
 export default connect( mapStateToProps, {} )( OutputPage )

@@ -1,5 +1,7 @@
 import React from 'react';
+import { connect } from 'react-redux'
 import { Field, reduxForm } from 'redux-form'; 
+import { loadCurrentValue } from '../../actions/textActions'
 import './InputText.css'
 
 class InputText extends React.Component{
@@ -23,4 +25,15 @@ InputText = reduxForm({
     form: 'textForm'
 })( InputText );
 
+InputText = connect(
+    ( state, props ) => {
+        const initialValue = {}
+        if ( state.reducer.originalText ){
+            initialValue.originalText = state.reducer.originalText
+        }
+        return{ initialValue }
+    }, { load: loadCurrentValue }
+)( InputText )
+
 export default InputText
+ 
