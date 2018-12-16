@@ -3,6 +3,10 @@
     color: black;
 }
 
+li{
+    margin: 5px;
+}
+
 .modalButton:hover{
     background-color: green;    
 }
