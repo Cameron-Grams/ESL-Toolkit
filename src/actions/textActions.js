@@ -1,8 +1,4 @@
 
-
-
-
-
 export function setExercise( value ){
     return(
         {
@@ -21,14 +17,10 @@ export function instructionsDisplay(){
 }
 
 
-
-
-
-
 export function registerSentences( values ){
 
     // this needs work; not capturing everything needed...
-    let re = /([\w\s,'\-;]+)[\.\?!]/g;
+    let re = /([\w\s,'\-;$#()*@\[\]{}%^&"]+)[\.\?!]/g;
     let sentences = re[Symbol.match]( values.originalTextInput ); 
 
     return(

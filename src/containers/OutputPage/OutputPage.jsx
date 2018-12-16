@@ -1,34 +1,24 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import shuffleArray from '../../helpers/shuffleArray'
-import Header from '../../components/Header'
+import ReactToPrint from 'react-to-print'
+import GenericButton from '../../components/Button'
+import FormToPrint from './FormToPrint'
 
 class OutputPage extends React.Component{
 
     render(){
-        const shuffledArray = shuffleArray.random( this.props.text.sentences )
-
-        const outputSentences = shuffledArray.map( ( sentence, index ) => {
-            return(
-                <div className={ "outputSentenceDiv" } > 
-                    <div className={ "outputSentenceNumberBox" }></div>
-                    <p className={ "outputeSentence" } key={ index } >{ sentence } </p>
-                </div>
-            )
-        })
-
         return(
-            <div className={ "containerDiv" }>
-                <div className={ "topControl"}>
-                    <Header />
+            <div >
+                <div className={ "headerDiv" }>
+                    <GenericButton destination={ `/input/${ this.props.exerciseType }` }  class={ "submitButton headerButton" } buttonText={ "Return to Edit"  } />
+                    <ReactToPrint
+                        trigger={() => <div ><button className="headerButton submitButton" >Print this form</ button ></div> }
+                        content={() => this.componentRef}
+                    />
                 </div>
-                <div className={ "innerDiv sentenceDisplayDiv shadowCentralComponent" } >  
-                    <h3>{ this.props.text.title }</h3>
-                    { outputSentences }
-                </div> 
-                <div className={ "liftDiv"}></div>
+                <FormToPrint ref={el => (this.componentRef = el)} />
             </div>
-        )
+        )    
     }
 }
 

@@ -71,14 +71,6 @@ button{
     margin: 5px;
 }
 
-.outputSentenceNumberBox{
-    border: 1px solid black;
-    border-radius: 3px; 
-    height: 30px;
-    width: 30px;
-    margin: 15px;
-}
-
 .sentenceDisplayDiv{
     width: 75%;
 }
