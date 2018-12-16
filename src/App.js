@@ -15,7 +15,7 @@ class App extends Component {
                 <Switch>
                     <Route exact path={ "/" } component={ Main }  />
                     <Route exact path={ "/input/:type" } component={ InputPage } />             
-                    <Route exact path={ "/observe-exercise" } component={ OutputPage } />             
+                    <Route exact path={ "/confirm-exercise" } component={ OutputPage } />             
                 </Switch>            
             </BrowserRouter>
             </Provider>

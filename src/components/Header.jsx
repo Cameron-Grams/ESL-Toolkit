@@ -7,7 +7,7 @@ class Header extends React.Component{
     render(){
         return(
             <div className={ "headerDiv" }>
-                <GenericButton destination={ `/input/${ this.props.exerciseType }` }  class={ "submitButton headerButton" } buttonText={ "Re-do"  } />
+                <GenericButton destination={ `/input/${ this.props.exerciseType }` }  class={ "submitButton headerButton" } buttonText={ "Edit"  } />
                 <GenericButton destination={ "" }  class={ "submitButton headerButton" } buttonText={ "Confirm Exercise" } />           
             </div>
         )

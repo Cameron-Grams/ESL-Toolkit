@@ -1,9 +1,11 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import {  setExercise, instructionsDisplay, registerSentences } from '../../actions/textActions'
+import Modal from '../../components/Modal'
 import InputText from './InputText'
 import './InputText.css'
-import InstructionsModal from './InstructionsModal';
+import InstructionTextCloze from './InstructionTextCloze';
+import InstructionTextScramble from './InstructionTextScramble'
 
 class InputPage extends React.Component{
     constructor( props ){
@@ -30,19 +32,15 @@ class InputPage extends React.Component{
 
     registerInputText = ( values ) => {
         this.props.registerSentences( values )
-        this.props.history.push( '/observe-exercise' )
+        this.props.history.push( "/confirm-exercise" )
     }
 
     render(){
-        let instructions = this.props.showInstructions ? 
-            <div>
-                <InstructionsModal />
-            </div>
-            :
-            <div>
-                <button onClick={ this.nowShowInstructions }>Show the instructions</button>
-            </div>
+        let instructionText = ( this.props.exerciseType === 'cloze' ) ? <InstructionTextCloze /> : <InstructionTextScramble /> 
 
+        let instructions = <Modal handleClose={ this.nowShowInstructions } show={ this.props.showInstructions } >
+                               { instructionText }  
+                           </Modal> 
 
 
         return(
@@ -50,9 +48,10 @@ class InputPage extends React.Component{
                 <div className={ "topControl"}></div>
                 <div className={ "innerDiv inputInnerDiv shadowCentralComponent" }>
                     <h2 className={ "titleElement" }>Input text</h2>
-                    { instructions }
+                    <button className="submitButton  inputButton" onClick={ this.nowShowInstructions }>Show Instructions</button>
                     <InputText onSubmit={ this.registerInputText } />
                 </div>
+                { instructions }
                 <div className={ "liftDiv"}></div>
             </div>
         )
@@ -60,6 +59,7 @@ class InputPage extends React.Component{
 }
 
 const mapStateToProps = ( state ) => ({
+    exerciseType : state.reducer.exerciseType,
     showInstructions : state.reducer.showInstructions
 })
 

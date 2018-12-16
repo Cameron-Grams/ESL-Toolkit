@@ -1,14 +1,46 @@
-.instructionsModalDiv{
-    width: 100%;
-    height: 100vh;
-    background-color: black;
-    color: white;
-    z-index: 2;
+/* css for the modal */
+.instructionsModalTextDiv{
+    color: black;
 }
 
+.modalButton:hover{
+    background-color: green;    
+}
 
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width:100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+}
 
+.main-modal {
+  position:fixed;
+  background: white;
+  width: 80%;
+  height: auto;
+  top:50%;
+  left:50%;
+  transform: translate(-50%,-50%);
+}
 
+.display-block {
+  display: block;
+}
+
+.display-none {
+  display: none;
+}
+
+#landingListDiv{
+    width: 50%;
+    text-align: left;
+    margin: auto;
+}
+
+/* css for the main input page */
 .inputInnerDiv{
     width: 40%;
 }
