@@ -19,7 +19,7 @@ class ScrambleDisplay extends React.Component{
         return(
             <div className={ "containerDiv" }>
                 <div className={ "topControl"}></div>
-                <div className={ "innerDiv sentenceDisplayDiv shadowCentralComponent" } >  
+                <div className={ " sentenceDisplayDiv " } >  
                     <h3>{ this.props.text.title }</h3>
                     { outputSentences }
                 </div> 
