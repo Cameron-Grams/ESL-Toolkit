@@ -22,16 +22,19 @@ class InputText extends React.Component{
 }
 
 InputText = reduxForm({
-    form: 'textForm'
+    form: 'textForm',
+    enableReinitialize : true
 })( InputText );
 
 InputText = connect(
     ( state, props ) => {
-        const initialValue = {}
-        if ( state.reducer.originalText ){
-            initialValue.originalText = state.reducer.originalText
+        const initialValues = {}
+        console.log( 'in input text with edit value: ', props.editValue )
+        if ( props.editValue ){
+            initialValues.textTitleInput = state.reducer.title; 
+            initialValues.originalTextInput = state.reducer.originalText
         }
-        return{ initialValue }
+        return{ initialValues }
     }, { load: loadCurrentValue }
 )( InputText )
 

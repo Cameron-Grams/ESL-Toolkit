@@ -1,6 +1,7 @@
 const initialState = {
     exerciseType : null,
     showInstructions: false,
+    useCurrent : false,
     title : "", 
     originalText : null,
     sentences : []
@@ -26,6 +27,7 @@ const Reducer = ( state = initialState, action) => {
         case( 'REGISTER_TEXT' ): { 
             return{
                 ...state,
+                useCurrent : true,
                 originalText : action.text,
                 title : action.title,
                 sentences : action.sentences
@@ -36,6 +38,12 @@ const Reducer = ( state = initialState, action) => {
             return{
                 ...state,
                 originalText : action.value
+            }
+        }
+
+        case( 'RESET_VALUES' ):{
+            return{
+                ...initialState
             }
         }
 

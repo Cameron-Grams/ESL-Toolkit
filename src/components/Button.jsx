@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 
 const GenericButton = ( props ) => {
     return(
-        <Link to={ props.destination }><button className={ props.class }>{ props.buttonText }</button></Link>
+        <Link to={ props.destination }><button className={ props.class } onClick={ props.buttonAction }>{ props.buttonText }</button></Link>
     )
 }
 

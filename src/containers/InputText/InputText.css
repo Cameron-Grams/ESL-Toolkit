@@ -1,6 +1,7 @@
 /* css for the modal */
 .instructionsModalTextDiv{
     color: black;
+    padding: 10px;
 }
 
 li{
@@ -77,5 +78,5 @@ li{
 }
 
 .inputButton:hover{
-    background-color: #bf3b33;
+    background-color: #03993a;
 }

@@ -42,14 +42,13 @@ class InputPage extends React.Component{
                                { instructionText }  
                            </Modal> 
 
-
         return(
             <div className={ "containerDiv"} > 
                 <div className={ "topControl"}></div>
                 <div className={ "innerDiv inputInnerDiv shadowCentralComponent" }>
                     <h2 className={ "titleElement" }>Input text</h2>
                     <button className="submitButton  inputButton" onClick={ this.nowShowInstructions }>Show Instructions</button>
-                    <InputText onSubmit={ this.registerInputText } />
+                    <InputText onSubmit={ this.registerInputText } editValue={ this.props.useCurrent } />
                 </div>
                 { instructions }
                 <div className={ "liftDiv"}></div>
@@ -60,7 +59,9 @@ class InputPage extends React.Component{
 
 const mapStateToProps = ( state ) => ({
     exerciseType : state.reducer.exerciseType,
-    showInstructions : state.reducer.showInstructions
+    useCurrent : state.reducer.useCurrent,
+    showInstructions : state.reducer.showInstructions,
+    originalText : state.reducer.originalText
 })
 
 export default connect( mapStateToProps, { setExercise, instructionsDisplay, registerSentences } )( InputPage )

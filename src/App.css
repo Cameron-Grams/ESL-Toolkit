@@ -84,3 +84,16 @@ button{
 .headerButton:hover{
     background-color: #03993a;
 }
+
+.editButton:hover{
+    background-color: #f7ef02; 
+    color: black;
+}
+
+.startOverButton:hover{
+    background-color: #bf3b33;
+}
+
+.newExerciseButton:hover{
+    background-color: #0a58d6;
+}

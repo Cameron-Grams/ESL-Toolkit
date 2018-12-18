@@ -42,3 +42,9 @@ export function loadCurrentValue( value ){
         }
     )
 }
+
+export function resetValues(){
+    return(
+        { type : 'RESET_VALUES' }
+    )
+}
