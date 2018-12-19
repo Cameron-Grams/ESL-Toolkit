@@ -29,7 +29,6 @@ InputText = reduxForm({
 InputText = connect(
     ( state, props ) => {
         const initialValues = {}
-        console.log( 'in input text with edit value: ', props.editValue )
         if ( props.editValue ){
             initialValues.textTitleInput = state.reducer.title; 
             initialValues.originalTextInput = state.reducer.originalText

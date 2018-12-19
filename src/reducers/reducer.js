@@ -1,6 +1,7 @@
 const initialState = {
     exerciseType : null,
     showInstructions: false,
+    showError : false,
     useCurrent : false,
     title : "", 
     originalText : null,
@@ -30,7 +31,15 @@ const Reducer = ( state = initialState, action) => {
                 useCurrent : true,
                 originalText : action.text,
                 title : action.title,
-                sentences : action.sentences
+                sentences : action.sentences,
+                showError : false
+            }
+        }
+
+        case( 'INDICATE_ERROR' ): {
+            return{
+                ...state,
+                showError : true
             }
         }
 

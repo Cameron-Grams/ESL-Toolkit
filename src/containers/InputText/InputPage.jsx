@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import {  setExercise, instructionsDisplay, registerSentences } from '../../actions/textActions'
+import {  setExercise, instructionsDisplay, registerSentences, registerError } from '../../actions/textActions'
 import Modal from '../../components/Modal'
 import InputText from './InputText'
 import './InputText.css'
@@ -18,21 +18,29 @@ class InputPage extends React.Component{
         this.registerExerciseType()
     }
 
-
-
     registerExerciseType(){
         let { type } = this.props.match.params
         this.props.setExercise( type )
     }
-
 
     nowShowInstructions(){
         this.props.instructionsDisplay()
     }
 
     registerInputText = ( values ) => {
-        this.props.registerSentences( values )
-        this.props.history.push( "/confirm-exercise" )
+
+        if( values.originalTextInput && ( values.originalTextInput !== " " )) {
+            this.props.registerSentences( values )
+            if ( this.props.exerciseType === 'cloze' ){
+                this.props.history.push( "/build-cloze" )
+            } else if ( this.props.exerciseType === "scramble" ){
+                this.props.history.push( "/confirm-exercise" )
+            } else {
+                this.props.history.push( "/" )
+            }
+        } else {
+            this.props.registerError()
+        }
     }
 
     render(){
@@ -40,13 +48,16 @@ class InputPage extends React.Component{
 
         let instructions = <Modal handleClose={ this.nowShowInstructions } show={ this.props.showInstructions } >
                                { instructionText }  
-                           </Modal> 
+                             </Modal> 
+                    
+        let indicateError = this.props.showError ? <h3 className={ "errorMessage" }>Please Enter Text</h3> : null
 
         return(
             <div className={ "containerDiv"} > 
                 <div className={ "topControl"}></div>
                 <div className={ "innerDiv inputInnerDiv shadowCentralComponent" }>
                     <h2 className={ "titleElement" }>Input text</h2>
+                    { indicateError }
                     <button className="submitButton  inputButton" onClick={ this.nowShowInstructions }>Show Instructions</button>
                     <InputText onSubmit={ this.registerInputText } editValue={ this.props.useCurrent } />
                 </div>
@@ -61,7 +72,8 @@ const mapStateToProps = ( state ) => ({
     exerciseType : state.reducer.exerciseType,
     useCurrent : state.reducer.useCurrent,
     showInstructions : state.reducer.showInstructions,
+    showError : state.reducer.showError, 
     originalText : state.reducer.originalText
 })
 
-export default connect( mapStateToProps, { setExercise, instructionsDisplay, registerSentences } )( InputPage )
+export default connect( mapStateToProps, { setExercise, instructionsDisplay, registerSentences, registerError } )( InputPage )

@@ -33,6 +33,14 @@ export function registerSentences( values ){
     )
 }
 
+export function registerError(){
+    return(
+        {
+            type : 'INDICATE_ERROR'
+        }
+    )
+}
+
 export function loadCurrentValue( value ){
     console.log( 'in text actions with value: ', value)
     return(
