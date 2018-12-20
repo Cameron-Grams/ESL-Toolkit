@@ -6,9 +6,9 @@ import {  vocabularyWord,
         } from '../../actions/textActions'; 
 import Header from '../../components/Header'
 import AddVocabularyWords from './AddVocabularyWords'; 
-import DisplayText from '../../components/DisplayText'; 
-import DisplayVocabulary from '../../components/DisplayVocabulary'; 
-import './BuildCloze.css'; 
+import DisplayText from './DisplayText'; 
+import DisplayVocabulary from './DisplayVocabulary'; 
+import GenericButton from '../../components/Button';
 
 class ClozeMaker extends React.Component{
 
@@ -65,7 +65,15 @@ class ClozeMaker extends React.Component{
 
         return (
                 <div className={ "containerDiv"} > 
-                    <Header />
+                    <div className={ "headerDiv" }> 
+                        <Header />
+                        <GenericButton
+                            destination={ '/confirm-exercise' }  
+                            class={ "submitButton newExerciseButton" } 
+                            buttonText={ "Confirm Exercise"  } 
+                            buttonAction={ this.props.resetValues }>
+                        </GenericButton>
+                    </div>
                     <div className={ "topControl"}></div>
                         <div className={ "innerDiv inputInnerDiv shadowCentralComponent" }>
                             <h2 className={ "titleElement" }>Cloze Maker</h2>
@@ -73,8 +81,8 @@ class ClozeMaker extends React.Component{
                             < DisplayText className={ "displayTargetText"} allParagraphs={ this.props.paragraphs } onClick={ ( paragraph, position ) => this.recognizeWord( paragraph, position )}    /> 
                             { vocab }
                             < AddVocabularyWords onSubmit={ this.moreVocab } />
+                        </div>
                     <div className={ "liftDiv"}></div>
-                    </div>
                 </div>
         );
     }
