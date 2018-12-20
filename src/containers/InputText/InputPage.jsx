@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import {  setExercise, instructionsDisplay, registerSentences, registerError } from '../../actions/textActions'
+import {  setExercise, instructionsDisplay, registerText, registerError } from '../../actions/textActions'
 import Modal from '../../components/Modal'
 import InputText from './InputText'
 import './InputText.css'
@@ -30,7 +30,7 @@ class InputPage extends React.Component{
     registerInputText = ( values ) => {
 
         if( values.originalTextInput && ( values.originalTextInput !== " " )) {
-            this.props.registerSentences( values )
+            this.props.registerText( values )
             if ( this.props.exerciseType === 'cloze' ){
                 this.props.history.push( "/build-cloze" )
             } else if ( this.props.exerciseType === "scramble" ){
@@ -76,4 +76,4 @@ const mapStateToProps = ( state ) => ({
     originalText : state.reducer.originalText
 })
 
-export default connect( mapStateToProps, { setExercise, instructionsDisplay, registerSentences, registerError } )( InputPage )
+export default connect( mapStateToProps, { setExercise, instructionsDisplay, registerText, registerError } )( InputPage )

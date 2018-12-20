@@ -2,8 +2,9 @@ import React from 'react';
 import { connect } from 'react-redux'; 
 import {  vocabularyWord, 
           updateWordDisplay,
-          resetExercise           
+          resetValues           
         } from '../../actions/textActions'; 
+import Header from '../../components/Header'
 import AddVocabularyWords from './AddVocabularyWords'; 
 import DisplayText from '../../components/DisplayText'; 
 import DisplayVocabulary from '../../components/DisplayVocabulary'; 
@@ -46,12 +47,12 @@ class ClozeMaker extends React.Component{
     }
 
     goToConfirm(){
-        this.props.history.push( '/confirm-cloze' ); 
+        this.props.history.push( 'confirm-exercise' ); 
     }
 
     startNew(){
-        this.props.history.push( 'input-text' ); 
-        this.props.resetExercise();
+        this.props.history.push( '/input/cloze' ); 
+        this.props.resetValues();
     }
 
     render() {
@@ -63,18 +64,18 @@ class ClozeMaker extends React.Component{
                   </div>: null; 
 
         return (
-        <div className="ClozeDiv App">
-            <div  id="buttonDiv" >
-                <button className="clozeButton submitButton" onClick={ e => this.startNew() } >Start Over</button>
-                <button className="submitButton" onClick={ this.goToConfirm } >Confirm Worksheet and Print</button>
-            </div>
-            <header className="App-header">
-                <h3 className="targetTitle">Target Text:</h3>
-                < DisplayText className={ "displayTargetText"} allParagraphs={ this.props.paragraphs } onClick={ ( paragraph, position ) => this.recognizeWord( paragraph, position )}    /> 
-                { vocab }
-                < AddVocabularyWords onSubmit={ this.moreVocab } />
-            </header>
-        </div>
+                <div className={ "containerDiv"} > 
+                    <Header />
+                    <div className={ "topControl"}></div>
+                        <div className={ "innerDiv inputInnerDiv shadowCentralComponent" }>
+                            <h2 className={ "titleElement" }>Cloze Maker</h2>
+
+                            < DisplayText className={ "displayTargetText"} allParagraphs={ this.props.paragraphs } onClick={ ( paragraph, position ) => this.recognizeWord( paragraph, position )}    /> 
+                            { vocab }
+                            < AddVocabularyWords onSubmit={ this.moreVocab } />
+                    <div className={ "liftDiv"}></div>
+                    </div>
+                </div>
         );
     }
 
@@ -86,4 +87,4 @@ const mapStateToProps = ( state ) => ( {
     vocabularyList: state.reducer.vocabularyList
 })
 
-export default connect( mapStateToProps, { vocabularyWord, updateWordDisplay, resetExercise } )( ClozeMaker );
+export default connect( mapStateToProps, { vocabularyWord, updateWordDisplay, resetValues } )( ClozeMaker );

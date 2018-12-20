@@ -1,15 +1,31 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import { resetValues } from '../actions/textActions'
 import GenericButton from './Button'
 
 class Header extends React.Component{
 
     render(){
         return(
-            <div className={ "headerDiv" }>
-                <GenericButton destination={ `/input/${ this.props.exerciseType }` }  class={ "submitButton headerButton" } buttonText={ "Edit"  } />
-                <GenericButton destination={ "" }  class={ "submitButton headerButton" } buttonText={ "Confirm Exercise" } />           
-            </div>
+            <React.Fragment> 
+                <GenericButton 
+                    destination={ `/` }  
+                    class={ "submitButton newExerciseButton" } 
+                    buttonText={ "Change Exercise"  } 
+                    buttonAction={ this.props.resetValues }
+                    />
+                <GenericButton 
+                    destination={ `/input/${ this.props.exerciseType }` }  
+                    class={ "submitButton startOverButton" } 
+                    buttonText={ "Start Over"  } 
+                    buttonAction={ this.props.resetValues }
+                    />
+                <GenericButton 
+                    destination={ `/input/${ this.props.exerciseType }` }  
+                    class={ "submitButton editButton" } 
+                    buttonText={ "Edit the Exercise"  } 
+                    />
+            </React.Fragment>
         )
     }
 }
@@ -18,4 +34,4 @@ const mapStateToProps = ( state ) => ({
     exerciseType : state.reducer.exerciseType
 })
 
-export default connect( mapStateToProps, {} )( Header )
+export default connect( mapStateToProps, { resetValues } )( Header )

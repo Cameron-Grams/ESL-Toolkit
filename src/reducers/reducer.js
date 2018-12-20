@@ -5,10 +5,10 @@ const initialState = {
     useCurrent : false,
     title : "", 
     originalText : null,
-    sentences : [],
     paragraphs : [],
-    vocabularyList : [],
-    wordObjects : [ {} ]
+    sentences : [],
+    wordObjects : [ {} ],
+    vocabularyList : []
 }
 
 const Reducer = ( state = initialState, action) => {
@@ -28,14 +28,16 @@ const Reducer = ( state = initialState, action) => {
             }
         }
 
-        case( 'REGISTER_TEXT' ): {  // for Scramble
+        case( 'REGISTER_TEXT' ): {  
             return{
                 ...state,
                 useCurrent : true,
-                originalText : action.text,
+                showError : false,
                 title : action.title,
+                originalText : action.text,
+                paragraphs : action.paragraphs,
                 sentences : action.sentences,
-                showError : false
+                wordObjects : action.wordObjects
             }
         }
 
@@ -56,6 +58,20 @@ const Reducer = ( state = initialState, action) => {
         case( 'RESET_VALUES' ):{
             return{
                 ...initialState
+            }
+        }
+
+        case( 'ADD_VOCABULARY' ): {
+            return{
+                ...state,
+                vocabularyList : [ ...state.vocabularyList, action.vocabularyList ]
+            }
+        }
+
+        case( 'UPDATE_WORD' ): {
+            return{
+                ...state,
+                wordObjects : action.wordObjects
             }
         }
 

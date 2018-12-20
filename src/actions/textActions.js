@@ -42,25 +42,13 @@ export function resetValues(){
 }
 
 // functions for Scramble
-export function registerSentences( values ){
+export function registerText( values ){
 
     // this needs work; not capturing everything needed...
     let re = /([\w\s,'\-;$#()*@\[\]{}%^&"]+)[\.\?!]/g;
     let sentences = re[Symbol.match]( values.originalTextInput ); 
 
-    return(
-        { 
-            type : 'REGISTER_TEXT',
-            text : values.originalTextInput,
-            sentences : sentences,
-            title : values.textTitleInput
-        } 
-    )
-}
-
-// functions for Cloze
-export function registerOriginalText( values ){
-
+    //cloze specific
     let paragraphs = [];
     let allWordObjects = [];
 
@@ -86,16 +74,33 @@ export function registerOriginalText( values ){
         paragraphs.push( paragraphWordArray ); 
         return paragraphs; 
     }); 
+    
+    // return object with properties directly
+    return(
+        { 
+            type : 'REGISTER_TEXT',
+            title : values.textTitleInput,
+            text : values.originalTextInput,
+            paragraphs: [ ...paragraphs ],
+            sentences : sentences,
+            wordObjects: [ ...allWordObjects ]
+        } 
+    )
+}
 
-    const title = values.textTitleInput;
+// functions for Cloze
+export function vocabularyWord( selectedWord ){
+    let finalWord = selectedWord.replace(/['!"#$%&\\'()*+,\-./:;<=>?@[\\\]^_`{|}~']/g,"");
 
-    return{
-        type: actionTypes.registerOriginalText,
-        data: { 
-            ...values,
-            title: title, 
-            wordObjects: [ ...allWordObjects ],
-            paragraphs: [ ...paragraphs ] 
-        }
-    }
-};
+    return({
+        type: 'ADD_VOCABULARY',
+        vocabularyList: finalWord 
+    })
+}; 
+
+export function updateWordDisplay( newArrayWordObjects ){
+    return( {
+        type: 'UPDATE_WORD',
+        wordObjects: newArrayWordObjects
+    })
+}
