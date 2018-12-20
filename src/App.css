@@ -97,3 +97,12 @@ button{
 .newExerciseButton:hover{
     background-color: #0a58d6;
 }
+
+.wordSpan:hover{
+    color: #bf3b33;
+    cursor: pointer;
+}
+
+.clozePrintDiv{
+    width: 75%;
+}

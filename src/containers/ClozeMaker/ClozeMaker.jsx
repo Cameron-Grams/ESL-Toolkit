@@ -64,16 +64,17 @@ class ClozeMaker extends React.Component{
                   </div>: null; 
 
         return (
-                <div className={ "containerDiv"} > 
-                    <div className={ "headerDiv" }> 
+            <React.Fragment> 
+                <div className={ "headerDiv" }> 
                         <Header />
                         <GenericButton
                             destination={ '/confirm-exercise' }  
                             class={ "submitButton newExerciseButton" } 
-                            buttonText={ "Confirm Exercise"  } 
-                            buttonAction={ this.props.resetValues }>
+                            buttonText={ "Confirm Exercise"  } >
                         </GenericButton>
-                    </div>
+                </div> 
+                <div className={ "containerDiv"} > 
+                    
                     <div className={ "topControl"}></div>
                         <div className={ "innerDiv inputInnerDiv shadowCentralComponent" }>
                             <h2 className={ "titleElement" }>Cloze Maker</h2>
@@ -84,6 +85,7 @@ class ClozeMaker extends React.Component{
                         </div>
                     <div className={ "liftDiv"}></div>
                 </div>
+i           </React.Fragment>
         );
     }
 
