@@ -5,7 +5,10 @@ const initialState = {
     useCurrent : false,
     title : "", 
     originalText : null,
-    sentences : []
+    sentences : [],
+    paragraphs : [],
+    vocabularyList : [],
+    wordObjects : [ {} ]
 }
 
 const Reducer = ( state = initialState, action) => {
@@ -25,7 +28,7 @@ const Reducer = ( state = initialState, action) => {
             }
         }
 
-        case( 'REGISTER_TEXT' ): { 
+        case( 'REGISTER_TEXT' ): {  // for Scramble
             return{
                 ...state,
                 useCurrent : true,
