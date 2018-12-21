@@ -77,7 +77,7 @@ class ClozeMaker extends React.Component{
                     
                     <div className={ "topControl"}></div>
                         <div className={ "innerDiv inputInnerDiv shadowCentralComponent" }>
-                            <h2 className={ "titleElement" }>Cloze Maker</h2>
+                            <h2 className={ "titleElement clozeCenter" }>Cloze Maker</h2>
 
                             < DisplayText className={ "displayTargetText"} allParagraphs={ this.props.paragraphs } onClick={ ( paragraph, position ) => this.recognizeWord( paragraph, position )}    /> 
                             { vocab }

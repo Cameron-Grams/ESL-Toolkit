@@ -4,13 +4,13 @@ import { Field, reduxForm } from 'redux-form';
 let AddVocabularyWords = ( props ) => {
     return(
         <form onSubmit={ props.handleSubmit } >
-            <div>< Field 
-                className = "newVocab generalInput targetTitle" 
+            <div className={ "clozeCenter"}>< Field 
+                className = "newVocab generalInput" 
                 name="additionalVocabulary" 
                 component={ "input" } 
                 placeholder="Enter Additonal Vocabulary Words"   />
             </div>
-            <button className="submitButton" type="submit" >Add Vocabulary Words</button>
+            <button className=" clozeCenter submitButton inputButton" type="submit" >Add Vocabulary Words</button>
         </form>
     )
 }

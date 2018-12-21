@@ -1,9 +1,10 @@
 import React from 'react'
 
 const InstructionsModal = ( props ) => {
-    const thirdPara =  " pasting text for the Sentence Scramble exercise; some text from the web has apostophes that break the sentences." +
+    const thirdPara =  " pasting text with the Sentence Scramble exercise; some text from the web has apostophes that break the sentences." +
     " There may be other symbols in text taken from the web that break the process.  Please check the output carefully to" +
-    " ensure that it is the exercise you want."
+    " ensure that it is the exercise you want. If there is a problem with the way the exercise displays, just return to editing and manually " +
+    "type the words or punctuation."
 
     return(
         <div className={ "instructionsModalTextDiv" }>

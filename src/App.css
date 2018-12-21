@@ -30,6 +30,10 @@ button{
     border: 1px solid transparent;
  }
 
+ .newVocab{
+     width: 40%;
+ }
+
 .containerDiv{
     display : flex;
     flex-direction: column;
@@ -103,6 +107,23 @@ button{
     cursor: pointer;
 }
 
+#finalTitle{
+    text-align: center;
+}
+
 .clozePrintDiv{
     width: 75%;
+    border: 1px solid black;
+    border-radius: 5px;
+    padding: 9px;
+    text-align: left;
+}
+
+.clozeCenter{
+    text-align: center;
+}
+
+p{
+    padding: 10px;
+    line-height: 1.6;
 }
