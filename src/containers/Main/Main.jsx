@@ -12,8 +12,9 @@ class Main extends React.Component{
                 <div className={ "innerDiv mainInnerDiv shadowCentralComponent"}>
                     <h3 className={ "mainTitle" } >ESL Teacher's Toolkit</h3>
                     <p>Select the type of exercise to build:</p>
-                    <Link to={ "/input/cloze" }><button className={ "submitButton clozeButton"}>Cloze Exercise</button></Link><br></br>
-                    <Link to={ "/input/scramble" }><button className={ "submitButton scrambleButton"} >Sentence Scramble Exercise</button></Link>
+                    <Link to={ "/input/cloze" }><button className={ "submitButton mainButton clozeButton"}>Cloze Exercise</button></Link><br></br>
+                    <Link to={ "/matching" }><button className={ "submitButton mainButton matchButton"}>Matching Exercise</button></Link><br></br>
+                    <Link to={ "/input/scramble" }><button className={ "submitButton mainButton scrambleButton"} >Sentence Scramble Exercise</button></Link>
                 </div>
                 <div className={ "liftDiv"}></div>
             </div>

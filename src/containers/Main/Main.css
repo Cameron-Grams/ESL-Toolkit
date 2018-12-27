@@ -4,11 +4,7 @@
     max-width: 475px;
 }
 
-.clozeButton{
-    width: 40%;
-}
-
-.scrambleButton{
+.mainButton{
     width: 40%;
 }
 
@@ -18,4 +14,8 @@
 
 .scrambleButton:hover{
     background-color: #e08f09;
+}
+
+.matchButton:hover{
+    background-color: #04773a;
 }

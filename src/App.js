@@ -6,6 +6,7 @@ import Main from './containers/Main/Main'
 import InputPage from './containers/InputText/InputPage'
 import OutputPage from './containers/OutputPage/OutputPage'
 import ClozeMaker from './containers/ClozeMaker/ClozeMaker'
+import MatchMaker from './containers/MatchMaker/MatchMaker'
 import './App.css';
 
 class App extends Component {
@@ -17,6 +18,7 @@ class App extends Component {
                     <Route exact path={ "/" } component={ Main }  />
                     <Route exact path={ "/input/:type" } component={ InputPage } />             
                     <Route exact path={ "/build-cloze" } component={ ClozeMaker } />             
+                    <Route exact path={ "/matching" } component={ MatchMaker } />             
                     <Route exact path={ "/confirm-exercise" } component={ OutputPage } />             
                 </Switch>            
             </BrowserRouter>
