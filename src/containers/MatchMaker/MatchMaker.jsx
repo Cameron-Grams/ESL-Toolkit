@@ -1,4 +1,5 @@
 import React from 'react'
+import { connect } from 'react-redux'
 
 class MatchMaker extends React.Component{
 
@@ -10,4 +11,8 @@ class MatchMaker extends React.Component{
     }
 }
 
-export default MatchMaker
+const mapStateToProps = ( state ) => ({
+    ...state
+})
+
+export default connect( mapStateToProps, {} )( MatchMaker )

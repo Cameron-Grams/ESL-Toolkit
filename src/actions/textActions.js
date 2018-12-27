@@ -45,7 +45,7 @@ export function resetValues(){
 export function registerText( values ){
 
     // this needs work; not capturing everything needed...
-    let re = /([\w\s,'\-;$#()*@\[\]{}%^&"]+)[\.\?!]/g;
+    let re = /([\w\s,'\-;:$#()*@\[\]{}%^&"]+)[\.\?!]/g;
     let sentences = re[Symbol.match]( values.originalTextInput ); 
 
     //cloze specific
