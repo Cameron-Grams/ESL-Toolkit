@@ -69,10 +69,10 @@ button{
     justify-content: flex-start;
     align-items: center;
     text-align: left;
-    border: 1px solid grey;
     border-radius: 3px; 
+/*    border: 1px solid grey;
     padding: 7px;
-    margin: 5px;
+    margin: 5px; */
 }
 
 .sentenceDisplayDiv{
