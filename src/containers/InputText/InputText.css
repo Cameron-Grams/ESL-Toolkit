@@ -8,6 +8,10 @@ li{
     margin: 5px;
 }
 
+.modalButton{
+    margin-bottom: 20px;
+}
+
 .modalButton:hover{
     background-color: green;    
 }
@@ -75,6 +79,10 @@ li{
     margin: 10px;
     width: 70%;
     min-width: 400px;
+}
+
+.inputButton{
+    margin-bottom: 50px;
 }
 
 .inputButton:hover{
