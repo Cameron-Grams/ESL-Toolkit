@@ -44,9 +44,6 @@ export function resetValues(){
 // functions for Scramble
 export function registerText( values ){
 
-    // this needs work; not capturing everything needed...
-//    let re = /([\w\s,'\-;:$#()*@\[\]{}%^&"]+)[\.\?!]/g;
-//    let sentences = re[Symbol.match]( values.originalTextInput ); 
     let inputParagraph = values.originalTextInput;
     let sentences = inputParagraph.split(/[\.!?]+\s/g);
 

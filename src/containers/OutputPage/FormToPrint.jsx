@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import ErrorPage from '../../helpers/ErrorPage'
 import ScrambleDisplay from './ScrambleDisplay'
 import ClozeDisplay from './ClozeDisplay'
+import MatchDisplay from './MatchDisplay';
 
 
 class FormToPrint extends React.Component{
@@ -17,6 +18,9 @@ class FormToPrint extends React.Component{
             case( 'scramble' ):
                 displayText = <ScrambleDisplay /> 
                 break 
+            case( 'match' ):
+                displayText = <MatchDisplay />
+                break
             default:
                 displayText = <ErrorPage />
         }
