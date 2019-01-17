@@ -1,7 +1,5 @@
 import React from 'react';
 import { connect } from 'react-redux'; 
-import DisplayText from '../ClozeMaker/DisplayText'; 
-import DisplayVocabulary from '../ClozeMaker/DisplayVocabulary'; 
 
 class MatchDisplay extends React.Component{
 
@@ -12,7 +10,7 @@ class MatchDisplay extends React.Component{
             <div className={ "topControl" } ></div>
             <div className={ "clozePrintDiv" }>  
                 <h2 id="finalTitle" >{ this.props.title }</h2>
-                <h4>Exercise Text:</h4>
+                <h4>Matching Exercise:</h4>
                 {  /* mechanism to display columns... */} 
             </div>
             <div className={ "liftDiv"}></div>
