@@ -75,6 +75,12 @@ const Reducer = ( state = initialState, action) => {
             }
         }
 
+        case( 'REGISTER_MATCH' ): {
+            return{
+                ...state
+            }
+        }
+
         default:
             return { ...state }
     }

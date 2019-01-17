@@ -18,7 +18,7 @@ class FormToPrint extends React.Component{
             case( 'scramble' ):
                 displayText = <ScrambleDisplay /> 
                 break 
-            case( 'match' ):
+            case( 'matching' ):
                 displayText = <MatchDisplay />
                 break
             default:

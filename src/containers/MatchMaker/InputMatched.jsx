@@ -12,77 +12,55 @@ const renderField = ({ input, label, type, meta: { touched, error } }) => (
   </div>
 )
 
-const renderHobbies = ({ fields, meta: { error } }) => (
-  <ul>
-    <li>
-      <button type="button" onClick={() => fields.push()}>
-        Add Hobby
-      </button>
-    </li>
-    {fields.map((hobby, index) => (
-      <li key={index}>
-        <button
-          type="button"
-          title="Remove Hobby"
-          onClick={() => fields.remove(index)}
-        />
-        <Field
-          name={hobby}
-          type="text"
-          component={renderField}
-          label={`Hobby #${index + 1}`}
-        />
-      </li>
-    ))}
-    {error && <li className="error">{error}</li>}
-  </ul>
+const renderDefinition = ({ input, label, type, meta: { touched, error } }) => (
+  <div>
+    <label>{label}</label>
+    <div>
+      <textarea {...input} type={type} placeholder={label} rows="5" cols="70" />
+      {touched && error && <span>{error}</span>}
+    </div>
+  </div>
 )
 
-const renderMembers = ({ fields, meta: { error, submitFailed } }) => (
-  <ul>
-    <li>
+const renderMatchedVocab = ({ fields, meta: { error, submitFailed } }) => (
+  <div>
+    <div>
       <button type="button" onClick={() => fields.push({})}>
-        Add Member
+        Add Word/Definition pair
       </button>
       {submitFailed && error && <span>{error}</span>}
-    </li>
+    </div>
     {fields.map((member, index) => (
-      <li key={index}>
+      <div key={index}>
         <button
           type="button"
-          title="Remove Member"
+          title="Remove Vocab Pair"
           onClick={() => fields.remove(index)}
         />
-        <h4>Member #{index + 1}</h4>
+        <h4>Vocabulary Pair #{index + 1}</h4>
         <Field
-          name={`${member}.firstName`}
+          name={`${member}.word`}
           type="text"
           component={renderField}
-          label="First Name"
+          label="Word"
         />
         <Field
-          name={`${member}.lastName`}
-          type="text"
-          component={renderField}
-          label="Last Name"
+          name={`${member}.definition`}
+          type="textarea"
+          component={ renderDefinition }
+          label="Definition"
         />
-        <FieldArray name={`${member}.hobbies`} component={renderHobbies} />
-      </li>
+      </div>
     ))}
-  </ul>
+  </div>
 )
 
 const InputMatched = props => {
   const { handleSubmit, pristine, reset, submitting } = props
   return (
     <form onSubmit={handleSubmit}>
-      <Field
-        name="clubName"
-        type="text"
-        component={renderField}
-        label="Club Name"
-      />
-      <FieldArray name="members" component={renderMembers} />
+     
+      <FieldArray name="vocabulary" component={ renderMatchedVocab } />
       <div>
         <button type="submit" disabled={submitting}>
           Submit

@@ -107,5 +107,9 @@ export function updateWordDisplay( newArrayWordObjects ){
 // functions for Matching exercises
 
 export function registerMatch( values ) {
-    console.log( 'In text actions register Match with: ', values )
+    console.log( 'In text actions register Match with: ', values );
+    return( {
+        type : 'REGISTER_MATCH',
+        data : values
+    })
 }

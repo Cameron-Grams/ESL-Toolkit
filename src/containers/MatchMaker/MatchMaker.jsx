@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { registerError, instructionsDisplay, registerMatch } from '../../actions/textActions'
+import { setExercise, registerError, instructionsDisplay, registerMatch } from '../../actions/textActions'
 import Modal from '../../components/Modal'
 import InputMatched from './InputMatched'
 import './MatchText.css'
@@ -10,18 +10,23 @@ class InputPage extends React.Component{
     constructor( props ){
         super( props )
         this.nowShowInstructions = this.nowShowInstructions.bind( this )
+        this.registerExerciseType = this.registerExerciseType.bind( this )
     }
     
     componentDidMount(){
+        this.registerExerciseType()
     }
 
+    registerExerciseType(){
+        this.props.setExercise( 'matching' )
+    }    
+    
     nowShowInstructions(){
         this.props.instructionsDisplay()
     }
 
     registerMatch = ( values ) => {
-        console.log( 'In Match Maker with values: ', values )
-        if( values.hobby && ( values.hobby !== " " )) {
+        if( values.vocabulary && ( values.vocabulary !== " " )) {
             this.props.registerMatch( values )
             this.props.history.push( "/confirm-exercise" )
         } else {
@@ -57,7 +62,7 @@ const mapStateToProps = ( state ) => ({
     showInstructions : state.reducer.showInstructions
 })
 
-export default connect( mapStateToProps, { registerError, instructionsDisplay, registerMatch } )( InputPage )
+export default connect( mapStateToProps, { setExercise, registerError, instructionsDisplay, registerMatch } )( InputPage )
 
 
 /* build the input for the field array  https://redux-form.com/8.1.0/examples/fieldarrays/  */
