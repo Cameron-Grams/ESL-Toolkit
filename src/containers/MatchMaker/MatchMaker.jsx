@@ -1,8 +1,8 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import {  instructionsDisplay } from '../../actions/textActions'
+import { registerError, instructionsDisplay, registerMatch } from '../../actions/textActions'
 import Modal from '../../components/Modal'
-// import InputText from './InputText'
+import InputMatched from './InputMatched'
 import './MatchText.css'
 import InstructionTextMatch from './InstructionTextMatch';
 
@@ -19,18 +19,11 @@ class InputPage extends React.Component{
         this.props.instructionsDisplay()
     }
 
-    registerInputText = ( values ) => {
-
-        // update for the input of a Field Array...
-        if( values.originalTextInput && ( values.originalTextInput !== " " )) {
-            this.props.registerText( values )
-            if ( this.props.exerciseType === 'cloze' ){
-                this.props.history.push( "/build-cloze" )
-            } else if ( this.props.exerciseType === "scramble" ){
-                this.props.history.push( "/confirm-exercise" )
-            } else {
-                this.props.history.push( "/" )
-            }
+    registerMatch = ( values ) => {
+        console.log( 'In Match Maker with values: ', values )
+        if( values.hobby && ( values.hobby !== " " )) {
+            this.props.registerMatch( values )
+            this.props.history.push( "/confirm-exercise" )
         } else {
             this.props.registerError()
         }
@@ -50,7 +43,7 @@ class InputPage extends React.Component{
                     <h2 className={ "titleElement" }>Input Words and Definitions</h2>
                     { indicateError }
                     <button className="submitButton  inputButton" onClick={ this.nowShowInstructions }>Show Instructions</button>
-                    { /* need to create the field array input */  } 
+                    < InputMatched onSubmit={ this.registerMatch } />
                 </div>
                 { instructions }
                 <div className={ "liftDiv"}></div>
@@ -64,7 +57,7 @@ const mapStateToProps = ( state ) => ({
     showInstructions : state.reducer.showInstructions
 })
 
-export default connect( mapStateToProps, { instructionsDisplay } )( InputPage )
+export default connect( mapStateToProps, { registerError, instructionsDisplay, registerMatch } )( InputPage )
 
 
 /* build the input for the field array  https://redux-form.com/8.1.0/examples/fieldarrays/  */
