@@ -1,3 +1,9 @@
+
+
+
+
+// matchingVocab is keyed to the form producing vocabulary; [ { word: string, definition: string }, { word: string, definition: string }, ... ]
+
 const initialState = {
     exerciseType : null,
     showInstructions: false,
@@ -8,7 +14,8 @@ const initialState = {
     paragraphs : [],
     sentences : [],
     wordObjects : [ {} ],
-    vocabularyList : []
+    vocabularyList : [],
+    matchingVocab : [] 
 }
 
 const Reducer = ( state = initialState, action) => {
@@ -76,8 +83,10 @@ const Reducer = ( state = initialState, action) => {
         }
 
         case( 'REGISTER_MATCH' ): {
+            console.log( 'in reducer with the values: ', action.data.vocabulary )
             return{
-                ...state
+                ...state,
+                matchingVocab : action.data.vocabulary
             }
         }
 
